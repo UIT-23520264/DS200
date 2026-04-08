@@ -1,0 +1,13 @@
+services:
+  ubuntu-desktop:
+    image: dorowu/ubuntu-desktop-lxde-vnc:latest
+    container_name: ubuntu-desktop
+    ports:
+      - "6080:80"    # Web UI (noVNC): http://localhost:6080
+      - "5900:5900"  # VNC client (optional)
+    environment:
+      - RESOLUTION=1920x1080
+    volumes:
+      - ./workspace:/workspace
+    shm_size: "2gb"
+    restart: unless-stopped
